@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.example.mvvmex.entity.MovieResult.Item" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+            <ImageView
+                android:id="@+id/movie_poster"
+                bindImage="@{movie.image}"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/movie_title"
+                bindTitle="@{movie}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/movie_poster"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="혹성 탈출 (1999)" />
+
+            <TextView
+                android:id="@+id/movie_director"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{movie.director}"
+                app:layout_constraintEnd_toEndOf="@id/movie_title"
+                app:layout_constraintStart_toStartOf="@id/movie_title"
+                app:layout_constraintTop_toBottomOf="@id/movie_title"
+                tools:text="안석주" />
+
+            <TextView
+                android:id="@+id/movie_actor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{movie.actor}"
+                app:layout_constraintEnd_toEndOf="@id/movie_title"
+                app:layout_constraintStart_toStartOf="@id/movie_title"
+                app:layout_constraintTop_toBottomOf="@id/movie_director"
+                tools:text="안석주 김철" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
