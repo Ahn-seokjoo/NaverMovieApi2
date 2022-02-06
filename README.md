@@ -9,8 +9,10 @@
 ---
 ### **실행 영상**  
 #
-  - ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/67602108/118836521-e0580180-b8fe-11eb-9727-7a792a1955de.gif)
-  - 
+  - ![ezgif com-gif-maker (5)](https://user-images.githubusercontent.com/67602108/152693251-0e2fccce-6e99-4dd2-9b4b-cb792db3638e.gif)
+    실행 
+  - ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/67602108/152693258-814ce50e-04d4-42b7-951f-dd5155a1053f.gif)
+    db 추가, 삭제 영상
 
 ### **사용 기술 스택**
 --- 
@@ -41,7 +43,7 @@ com.example.githubsearchapp
 │    ├── MovieRepository
 │    ├── MovieRepositoryImpl
 ├── entity
-     └── MovieResult
+│    └── MovieResult
 ├── ext
 │    ├── BindingAdapter
 │    └── MovieModule
