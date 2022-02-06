@@ -112,3 +112,4 @@ Repository에서 local과 remote를 완벽하게 합치지 못한 것 같습니�
 local과 remote에서의 리턴 값이 ```Single<List<MovieResult.Item>>```, ```Single<MovieResult>```로 달라 Repository에서 함수 한개가 추가됐습니다.
 완벽한 캡슐화를 하고싶었다면, ```getMovieList```와 ```getRemoteMovieList```를 하나로 합쳐 ```getMovieList``` 하나의 함수로 만들고,
 remote와 local 구분 없이 ViewModel 단에서 데이터만 요청하는 구성으로 만들었으면 더 좋았을 것 같습니다.
+
