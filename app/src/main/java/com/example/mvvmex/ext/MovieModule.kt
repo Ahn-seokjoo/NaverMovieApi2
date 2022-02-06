@@ -2,10 +2,10 @@ package com.example.mvvmex.ext
 
 import android.content.Context
 import androidx.room.Room
-import com.example.mvvmex.data.MovieApi
 import com.example.mvvmex.data.MovieRepositoryImpl
 import com.example.mvvmex.data.local.MovieLocalRepositoryImpl
 import com.example.mvvmex.data.local.room.MovieDatabase
+import com.example.mvvmex.data.remote.MovieApi
 import com.example.mvvmex.data.remote.MovieRemoteRepositoryImpl
 import dagger.Module
 import dagger.Provides
