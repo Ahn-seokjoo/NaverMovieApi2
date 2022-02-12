@@ -21,15 +21,19 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     private lateinit var _binding: FragmentMovieBinding
     private val binding get() = _binding
     private val movieViewModel: MovieViewModel by activityViewModels()
-    private val adapter = MovieAdapter(::showMovieDetail, ::itemRemove)
+    private val movieAdapter = MovieAdapter(::showMovieDetail, ::itemRemove)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         _binding = DataBindingUtil.bind(view) ?: throw IllegalStateException("fail to bind")
-        binding.lifecycleOwner = viewLifecycleOwner
-        binding.recyclerView.adapter = adapter
+
+        binding.apply {
+            recyclerView.adapter = movieAdapter
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = movieViewModel
+        }
 
         movieViewModel.movieList.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+            movieAdapter.submitList(it)
         }
     }
 

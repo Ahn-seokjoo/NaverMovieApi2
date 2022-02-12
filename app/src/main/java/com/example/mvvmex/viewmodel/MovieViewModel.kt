@@ -11,6 +11,7 @@ import com.example.mvvmex.entity.MovieResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,9 +29,10 @@ class MovieViewModel @Inject constructor(private val repository: MovieRepository
 
         repository.getMovieList(movieTitle)
             .doOnSubscribe { _progressBarVisible.postValue(true) }
-            .doOnSuccess { _progressBarVisible.postValue(false) }
             .subscribeOn(Schedulers.io())
+            .delay(1000L, TimeUnit.MILLISECONDS) // 프로그래스 바 확인 위해 Delay 1초 줬습니다.
             .observeOn(AndroidSchedulers.mainThread())
+            .doAfterSuccess { _progressBarVisible.postValue(false) }
             .subscribe({
                 Log.d(TAG, "로컬 리스트 가져오기: $it")
                 if (it.isNullOrEmpty()) {
@@ -68,11 +70,11 @@ class MovieViewModel @Inject constructor(private val repository: MovieRepository
 
     fun deleteMovie(movie: MovieResult.Item) {
         repository.deleteMovieList(movie)
-            .subscribeOn(Schedulers.io())
             .doOnSubscribe { _progressBarVisible.postValue(true) }
-            .doOnComplete { _progressBarVisible.postValue(false) }
+            .subscribeOn(Schedulers.io())
             .doFinally {
                 getMovieList(searchString)
+                _progressBarVisible.postValue(false)
             }
             .subscribe({
                 Log.d(TAG, "deleteMovie: ${movie.title} 삭제 성공")

@@ -4,11 +4,12 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.example.mvvmex.viewmodel.MovieViewModel" />
 
-        <import type="android.view.View" />
 
     </data>
 
